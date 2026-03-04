@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nike shoes · CSS demo (inline · internal · external)</title>
+
+  <!-- === INTERNAL CSS === -->
+  <style>
+    /* Internal styles for Paragraph 2, Highlight 2, Building 2 */
+    .internal-paragraph {
+      color: orange;
+      font-weight: bold;
+    }
+    .internal-highlight {
+      color: green;        /* "Highlight 2" gets green */
+    }
+    .internal-building {
+      color: teal;         /* "Building 2" gets teal */
+    }
+
+    /* Also a little layout for the shoe section */
+    .shoe-gallery {
+      margin-top: 2.5rem;
+      padding: 1rem;
+      background: #f5f5f5;
+      border-radius: 16px;
+    }
+    .shoe-gallery h2 {
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.5rem;
+    }
+    .shoe-container {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .shoe-card {
+      background: white;
+      border-radius: 20px;
+      padding: 1rem 1rem 1.5rem 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 220px;
+    }
+    .shoe-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+    .shoe-card p {
+      font-weight: 600;
+      margin: 0.7rem 0 0;
+      color: #111;
+    }
+  </style>
+
+  <!-- === EXTERNAL CSS (linked) === -->
+  <link rel="stylesheet" href="style.css">
+  <!-- 
+    The external CSS file (style.css) controls:
+      - Paragraph 3  → purple underline
+      - Highlight 3  → blue (external)
+      - Building 3   → gray (external)
+    You'll find its content in the answer below.
+  -->
+</head>
+<body>
+
+  <h1>🎨 CSS demonstration: inline, internal & external</h1>
+
+  <!-- ========== PARAGRAPHS ========== -->
+  <section style="background:#eef6ff; padding:1rem; border-radius:20px; margin-bottom:2rem;">
+    <h2>📝 Paragraphs</h2>
+
+    <!-- Paragraph 1: INLINE CSS (blue italics) -->
+    <p style="color: blue; font-style: italic;">
+      <strong>Paragraph 1 (inline):</strong> Blue italics via inline style.
+    </p>
+
+    <!-- Paragraph 2: INTERNAL CSS (orange bold) -->
+    <p class="internal-paragraph">
+      <strong>Paragraph 2 (internal):</strong> Orange bold via internal CSS (.internal-paragraph).
+    </p>
+
+    <!-- Paragraph 3: EXTERNAL CSS (purple underline) -->
+    <p class="external-paragraph">
+      <strong>Paragraph 3 (external):</strong> Purple underline from external style.css
+    </p>
+  </section>
+
+  <!-- ========== HIGHLIGHTS ========== -->
+  <section style="background:#fff0e0; padding:1rem; border-radius:20px; margin-bottom:2rem;">
+    <h2>✨ Highlights</h2>
+
+    <!-- Highlight 1: INLINE CSS (red – colour not fully specified, so we choose red) -->
+    <h1 style="color: red;">Highlight 1 (inline) – red</h1>
+
+    <!-- Highlight 2: INTERNAL CSS (green) -->
+    <h2 class="internal-highlight">Highlight 2 (internal) – green</h2>
+
+    <!-- Highlight 3: EXTERNAL CSS (blue) -->
+    <h1 class="external-highlight">Highlight 3 (external) – blue</h1>
+  </section>
+
+  <!-- ========== BUILDINGS ========== -->
+  <section style="background:#e8f0e8; padding:1rem; border-radius:20px; margin-bottom:2rem;">
+    <h2>🏗️ Buildings</h2>
+
+    <!-- Building 1: INLINE CSS (brown) -->
+    <h3 style="color: brown;">Building 1 (inline) – brown</h3>
+
+    <!-- Building 2: INTERNAL CSS (teal) -->
+    <h3 class="internal-building">Building 2 (internal) – teal</h3>
+
+    <!-- Building 3: EXTERNAL CSS (gray) -->
+    <h3 class="external-building">Building 3 (external) – gray</h3>
+  </section>
+
+  <!-- ========== NIKE SHOES + PICTURES ========== -->
+  <section class="shoe-gallery">
+    <h2>👟 NIKE SHOES – added pictures</h2>
+    <div class="shoe-container">
+      
+      <!-- Nike shoe 1 -->
+      <div class="shoe-card">
+        <img 
+          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+          alt="Nike Air Zoom"
+          loading="lazy"
+        >
+        <p>Nike Air Zoom</p>
+      </div>
+
+      <!-- Nike shoe 2 -->
+      <div class="shoe-card">
+        <img 
+          src="https://images.unsplash.com/photo-1608231387042-66d177e0f5d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+          alt="Nike Revolution"
+          loading="lazy"
+        >
+        <p>Nike Revolution</p>
+      </div>
+
+      <!-- Nike shoe 3 -->
+      <div class="shoe-card">
+        <img 
+          src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+          alt="Nike Air Max"
+          loading="lazy"
+        >
+        <p>Nike Air Max</p>
+      </div>
+
+      <!-- Nike shoe 4 (extra) -->
+      <div class="shoe-card">
+        <img 
+          src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+          alt="Nike SB"
+          loading="lazy"
+        >
+        <p>Nike SB</p>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:1rem; color:#555;">🍃 high‑quality Nike shoe images from Unsplash</p>
+  </section>
+
+  <!-- small footer note about external CSS -->
+  <footer style="margin-top:2rem; font-size:0.9rem; text-align:center; border-top:1px dashed #aaa; padding-top:0.7rem;">
+    ⚡ External CSS (style.css) is listed separately below — it applies purple underline to Paragraph 3, blue to Highlight 3, and gray to Building 3.
+  </footer>
+
+</body>
+</html>
