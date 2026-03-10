@@ -1,50 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Door Dashing Service</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoorDash</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="top-bar">
+            <h1 id="main-heading">DoorDash: Food, Grocery and Retail Delivery</h1>
+            <div class="auth-buttons">
+                <span class="enter-icon">📍</span>
+                <span class="auth-link">Enter d...</span>
+                <span class="auth-link">Login</span>
+                <button class="open-app-btn">Open App</button>
+            </div>
+        </header>
 
-<div id="container">
+        <!-- Become a Dasher Section with Photo -->
+        <section class="dasher-section" id="dasher">
+            <div class="section-content">
+                <h2 id="dasher-heading">Become a Dasher</h2>
+                <p class="dasher-text">As a delivery driver, make money and work on your schedule. Sign up in minutes.</p>
+                <button class="earning-btn">Start earning →</button>
+            </div>
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&h=200&fit=crop" alt="Dasher delivering food" class="photo">
+            </div>
+        </section>
 
-<h1 id="title">Door Dashing</h1>
-<h2 class="heading">Fast Food Delivery</h2>
-<h3 class="heading">Order From Your Favorite Restaurants</h3>
-<h4 id="subheading">Quick and Reliable Service</h4>
+        <!-- Become a Merchant Section with Photo -->
+        <section class="merchant-section" id="merchant">
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=300&h=200&fit=crop" alt="Restaurant partner" class="photo">
+            </div>
+            <div class="section-content">
+                <h3 id="merchant-heading">Become a Merchant</h3>
+                <p class="merchant-text">Attract new customers and grow sales, starting with 0% commissions for up to 30 days.</p>
+                <button class="signup-btn">Sign up for DoorDash →</button>
+            </div>
+        </section>
 
-<img src="doordash1.jpg" alt="Food Delivery" class="image">
+        <!-- App Experience Section with Photo -->
+        <section class="app-experience" id="experience">
+            <div class="section-content">
+                <h4 id="experience-heading">Get the best DoorDash experience</h4>
+                <p class="experience-text">Experience the best your neighborhood has to offer, all in one app.</p>
+            </div>
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1606787620819-8bdf0c44c293?w=300&h=200&fit=crop" alt="Food delivery app on phone" class="photo">
+            </div>
+        </section>
 
-<p class="paragraph">
-Door dashing is a popular food delivery service that allows people to order meals from restaurants using a mobile app or website.
-</p>
+        <!-- Delivery Fee Offer Banner -->
+        <div class="offer-banner">
+            <p class="offer-title"><span class="red-text">$0 DELIVERY FEE</span> ON FIRST ORDER</p>
+            <p class="offer-note">Other fees apply</p>
+        </div>
 
-<img src="doordash2.jpg" alt="Restaurant Food" class="image">
+        <!-- Location Input Section -->
+        <div class="location-section">
+            <div class="location-input">
+                <span class="location-icon">📍</span>
+                <input type="text" placeholder="Enter delivery address" class="address-input">
+            </div>
+            <div class="location-actions">
+                <span class="login-link">Login</span>
+                <span class="current-location">📍 Use current location</span>
+            </div>
+        </div>
 
-<p class="paragraph">
-Customers can browse different restaurants, choose meals, and have their food delivered directly to their homes.
-</p>
+        <!-- App Promotion with small photo (replaces icon) -->
+        <div class="app-promo">
+            <div class="promo-content">
+                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=50&h=50&fit=crop" alt="App icon" class="promo-photo">
+                <div class="promo-text">
+                    <p class="promo-title">Browse faster in the app</p>
+                    <p class="promo-subtitle">$0 delivery fee on first order</p>
+                    <div class="ratings">
+                        <span class="stars">⭐⭐⭐⭐</span>
+                        <span class="rating-count">20M ratings</span>
+                    </div>
+                </div>
+            </div>
+            <button class="continue-app">Continue in app</button>
+        </div>
 
-<p id="important">
-Dashers are delivery drivers who pick up food from restaurants and deliver it to customers quickly and safely.
-</p>
-
-<img src="doordash3.jpg" alt="Delivery Driver" class="image">
-
-<p class="paragraph">
-The service saves time and makes it easier for people to enjoy restaurant meals without leaving their homes.
-</p>
-
-<p class="highlight">
-Many people use door dashing because it is convenient, fast, and offers many food choices.
-</p>
-
-<p class="paragraph">
-Door dashing has become very popular in many cities because it connects restaurants, drivers, and customers on one platform.
-</p>
-
-</div>
-
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-search"></i>
+                <span>Tabs</span>
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-file"></i>
+                <span>Files</span>
+            </div>
+        </nav>
+    </div>
 </body>
-</html>
+                    </html>
