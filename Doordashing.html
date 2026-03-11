@@ -1,1 +1,151 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoorDash – Why We're Great</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Image Carousel (Slide) at the beginning -->
+        <div class="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1625220194771-7ebdea0dbb72?w=800&h=300&fit=crop" alt="Fast delivery">
+                    <div class="carousel-caption">Delicious food, delivered fast</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1586816001966-79b73674c29f?w=800&h=300&fit=crop" alt="Variety of cuisines">
+                    <div class="carousel-caption">Choose from thousands of restaurants</div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1604908553668-ee28cca69180?w=800&h=300&fit=crop" alt="Happy dasher">
+                    <div class="carousel-caption">Earn on your own schedule</div>
+                </div>
+            </div>
+            <button class="carousel-control prev" onclick="moveSlide(-1)">❮</button>
+            <button class="carousel-control next" onclick="moveSlide(1)">❯</button>
+        </div>
+
+        <!-- Header -->
+        <header class="top-bar">
+            <h1 id="main-heading">DoorDash: Food, Grocery and Retail Delivery</h1>
+            <div class="auth-buttons">
+                <span class="enter-icon">📍</span>
+                <span class="auth-link">Enter d...</span>
+                <span class="auth-link">Login</span>
+                <button class="open-app-btn">Open App</button>
+            </div>
+        </header>
+
+        <!-- Dasher Benefits + Photo -->
+        <section class="dasher-section" id="dasher">
+            <div class="section-content">
+                <h2 id="dasher-heading">Become a Dasher</h2>
+                <p class="dasher-text">Set your own hours, earn competitively, and be your own boss. Millions of people choose to Dash because it fits their life – not the other way around.</p>
+                <button class="earning-btn">Start earning →</button>
+            </div>
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=300&h=200&fit=crop" alt="Dasher delivering food" class="photo">
+            </div>
+        </section>
+
+        <!-- Merchant Benefits + Photo -->
+        <section class="merchant-section" id="merchant">
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=300&h=200&fit=crop" alt="Restaurant partner" class="photo">
+            </div>
+            <div class="section-content">
+                <h3 id="merchant-heading">Become a Merchant</h3>
+                <p class="merchant-text">Reach more customers, increase sales, and enjoy low commissions. Our platform makes it easy to grow your business with zero upfront cost.</p>
+                <button class="signup-btn">Sign up for DoorDash →</button>
+            </div>
+        </section>
+
+        <!-- Customer Experience + Photo -->
+        <section class="app-experience" id="experience">
+            <div class="section-content">
+                <h4 id="experience-heading">Get the best DoorDash experience</h4>
+                <p class="experience-text">From local favorites to national chains, get anything delivered fast. Real‑time tracking and 24/7 support mean your order is in good hands.</p>
+            </div>
+            <div class="section-image">
+                <img src="https://images.unsplash.com/photo-1606787620819-8bdf0c44c293?w=300&h=200&fit=crop" alt="Food delivery app on phone" class="photo">
+            </div>
+        </section>
+
+        <!-- Delivery Fee Offer -->
+        <div class="offer-banner">
+            <p class="offer-title"><span class="red-text">$0 DELIVERY FEE</span> ON FIRST ORDER (other fees may apply)</p>
+        </div>
+
+        <!-- Location Input -->
+        <div class="location-section">
+            <div class="location-input">
+                <span class="location-icon">📍</span>
+                <input type="text" placeholder="Enter delivery address" class="address-input">
+            </div>
+            <div class="location-actions">
+                <span class="login-link">Login</span>
+                <span class="current-location">📍 Use current location</span>
+            </div>
+        </div>
+
+        <!-- App Promotion with small photo -->
+        <div class="app-promo">
+            <div class="promo-content">
+                <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=50&h=50&fit=crop" alt="App icon" class="promo-photo">
+                <div class="promo-text">
+                    <p class="promo-title">Browse faster in the app</p>
+                    <p class="promo-subtitle">Exclusive deals & personalized picks</p>
+                    <div class="ratings">
+                        <span class="stars">⭐⭐⭐⭐</span>
+                        <span class="rating-count">20M+ ratings</span>
+                    </div>
+                </div>
+            </div>
+            <button class="continue-app">Continue in app</button>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="nav-item active">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-search"></i>
+                <span>Tabs</span>
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-file"></i>
+                <span>Files</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Simple JavaScript for Carousel -->
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-item');
+
+        function showSlide(index) {
+            if (index >= slides.length) slideIndex = 0;
+            else if (index < 0) slideIndex = slides.length - 1;
+            else slideIndex = index;
+            
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === slideIndex);
+            });
+        }
+
+        function moveSlide(direction) {
+            showSlide(slideIndex + direction);
+        }
+
+        // Auto slide every 5 seconds
+        setInterval(() => moveSlide(1), 5000);
+    </script>
+</body>
+</html> 
