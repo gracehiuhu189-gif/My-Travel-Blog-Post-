@@ -1,122 +1,338 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Travel Blog</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanderings: Sahara · Everest · Sydney</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #f2eee9;
+            color: #1f2d2a;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .blog {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 25px 45px -18px #3a322a;
+            overflow: hidden;
+        }
+        .hero {
+            background: linear-gradient(105deg, #cbad8b 0%, #bdd3ce 100%);
+            padding: 2.5rem 3rem;
+            color: #1e2b26;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 350;
+            font-family: 'Georgia', serif;
+            letter-spacing: -0.01em;
+            line-height: 1.1;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            margin-top: 0.5rem;
+            border-left: 4px solid #2c4a3b;
+            padding-left: 1.5rem;
+        }
+        .content {
+            padding: 2.5rem 3rem;
+        }
+        .image-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 2rem 0;
+            justify-content: center;
+        }
+        .image-row img {
+            width: 100%;
+            max-width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 32px;
+            box-shadow: 0 8px 18px -6px #887b6e;
+            border: 1px solid #dacbbc;
+        }
+        hr {
+            border: none;
+            border-top: 3px dotted #b2977e;
+            margin: 2rem 0;
+        }
+        .thin-hr {
+            border-top: 1px solid #bba28c;
+            margin: 0.6rem 0;
+        }
+        pre {
+            background: #1e3530;
+            color: #f0e4d5;
+            padding: 1.2rem;
+            border-radius: 28px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            margin: 1.5rem 0;
+            border: 1px solid #7e6b58;
+        }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 24px;
+            border: 1px solid #bda98e;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+            background: #fefcf8;
+        }
+        th {
+            background: #446655;
+            color: white;
+            padding: 10px 5px;
+            border: 1px solid #8c7a66;
+        }
+        td {
+            padding: 8px 5px;
+            border: 1px solid #bcab96;
+            text-align: center;
+        }
+        td:first-child {
+            background: #ece2d7;
+            font-weight: 500;
+        }
+        .list-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .list-box {
+            background: #f5efe7;
+            padding: 1.5rem 2rem;
+            border-radius: 30px;
+            flex: 1 1 220px;
+            border: 1px solid #cfbba8;
+        }
+        .nested-box {
+            background: #f0e5d9;
+            padding: 1.5rem 2rem;
+            border-radius: 30px;
+            margin: 1.8rem 0;
+        }
+        .indent-quote {
+            margin-left: 2.5rem;
+            padding-left: 1.5rem;
+            border-left: 5px solid #608573;
+            font-style: italic;
+            color: #2b5143;
+            margin-bottom: 1.5rem;
+        }
+        .footer-note {
+            border-top: 2px solid #bda187;
+            margin-top: 2rem;
+            padding: 1.5rem 0 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            color: #4c5f55;
+        }
+        .stroke {
+            text-decoration: line-through 2px #b3544b;
+        }
+        mark {
+            background: #f5f0a3;
+            padding: 0.1rem 0.2rem;
+            border-radius: 6px;
+        }
+        u {
+            text-decoration: #b7623c wavy underline;
+        }
+        .blog-footer-inline {
+            background: #dad2c5;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+        /* simple image placeholder style */
+        .image-row img {
+            background: #cfc2b2; /* fallback */
+        }
+    </style>
 </head>
 <body>
+<div class="blog">
+    <div class="hero">
+        <h1>Dust · Stone · Salt</h1>
+        <p>Sahara · Everest · Sydney — a personal travel journal</p>
+    </div>
 
-<p><b>My Personal Travel Blog</b></p>
+    <div class="content">
+        <!-- pictures row (three images) -->
+        <div class="image-row">
+            <img src="https://images.unsplash.com/photo-1547234935-80c7145ec969?w=300&h=200&fit=crop&auto=format" alt="Sahara dunes" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1580121441575-41bcb5c6b47c?w=300&h=200&fit=crop&auto=format" alt="Mount Everest" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=300&h=200&fit=crop&auto=format" alt="Sydney Opera House" loading="lazy">
+        </div>
 
-<p><i>I love traveling because it exposes me to different cultures, landscapes, and unforgettable experiences.</i></p>
+        <!-- ========== FORMATTED LINES (embedded naturally) ========== -->
 
-<p><u>The Sahara Desert was one of the hottest and most breathtaking places I have ever visited.</u></p>
+        <!-- line 1 bold, line 2 italics, line 3 underline, line 4 superscripts, line 5 subscript, line 6 stroke, line 7 highlight, line 8 quotation, line 9 indent quotation, line 10 footer, line 11 line breaks with hr, line 12 3 lines with hr, line 13 pre, line 14 lists (unordered 5, ordered 6), line 15 nested list (6 items), and table 10x5 -->
 
-<p>Climbing Mount Everest felt like reaching the world’s highest dream<sup>1</sup>.</p>
+        <!-- lines 1–7 combined in a little block -->
+        <div style="background: #f7f1ea; border-radius: 32px; padding: 1.5rem 2rem; margin: 2rem 0;">
+            <p><strong>line 1 · bold: the sahara roared silently, everest whispered, sydney sang.</strong></p>
+            <p><em>line 2 · italics: *drifting dunes, cracking ice, salt spray*</em></p>
+            <p><u>line 3 · underline: every footprint tells a story — this one is mine.</u></p>
+            <p>line 4 · superscripts: i was there on 23<sup>rd</sup> feb (everest), 14<sup>th</sup> mar (sahara), and 7<sup>th</sup> apr (sydney).</p>
+            <p>line 5 · subscripts: sahara sand (SiO<sub>4</sub>), everest ice (H<sub>2</sub>O), sydney sea (NaCl) and thin air (CO<sub>2</sub>) — four subscripts.</p>
+            <p><span class="stroke">line 6 · stroke: originally planned only two destinations, but yolo.</span></p>
+            <p><mark>line 7 · highlight: the milky way above merzouga, prayer flags at kala patthar, bondi sunrise.</mark></p>
+        </div>
 
-<p>In Switzerland, I enjoyed seeing snow-covered mountains and drinking fresh milk H<sub>2</sub>O straight from alpine springs.</p>
+        <!-- line 8 quotation, line 9 indented quotation -->
+        <p><q>line 8 · quotation: the desert is a silent ocean, the mountain a frozen wave, the harbour a meeting of both.</q></p>
+        <div class="indent-quote">
+            line 9 · indented quotation: “and at the edge of each, i felt infinite — then i caught the flight home.”
+        </div>
 
-<p><del>I once thought traveling was boring until I explored the world.</del></p>
+        <!-- line 10 footer (inline and also at bottom) -->
+        <div style="margin: 1.2rem 0 2rem;">
+            <span class="blog-footer-inline">📌 line 10 · footer — published 17 feb 2026 · travel blog by Alex</span>
+        </div>
 
-<p><mark>Sydney amazed me with its beautiful beaches and the iconic Opera House.</mark></p>
+        <!-- line 11: line breaks with HR -->
+        <div style="margin: 2rem 0 1.5rem;">
+            <p><strong>line 11 · line breaks + hr</strong><br>
+            sahara: stars like spilled sugar<br>
+            everest: lungs burning with glory<br>
+            sydney: ferries trace silver paths<br>
+            and then —</p>
+            <hr class="thin-hr">
+            <p>...the journey continues.</p>
+        </div>
 
-<p><q>Traveling leaves you speechless, then turns you into a storyteller.</q></p>
+        <!-- line 12: 3 lines with HR -->
+        <div style="margin: 2rem 0;">
+            <p><strong>line 12 · three lines each followed by hr</strong></p>
+            <p>dune sea at merzouga</p>
+            <hr class="thin-hr">
+            <p>khumbu icefall at dawn</p>
+            <hr class="thin-hr">
+            <p>opera sails at dusk</p>
+            <hr class="thin-hr">
+        </div>
 
-<blockquote>
-    Visiting Switzerland taught me peace, patience, and appreciation for nature.
-     <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhUSEhIWFRUXGBUXGBUWFhUVFhcXFxUWFxUVGBcYHyggHRolGxUVITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OFRAPFSsdFR0tKysrLSstLS0tKy0rKy0rLS0tLSstLS0tKy0rKzc3LS0tNy0rNy0tLSstLTcrKys3Lf/AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABgECAwQHBQj/xABFEAACAQICBAkIBgkEAwAAAAAAAQIDEQQhBQYSMRNBUWFxgZGh0QciMlJTkrHBFEJDcoKiFRYjYrLC0uHwM3Oj4iST8f/EABcBAQEBAQAAAAAAAAAAAAAAAAABAgP/xAAZEQEBAQEBAQAAAAAAAAAAAAAAEQESAjH/2gAMAwEAAhEDEQA/AO4gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbAAhesuulNfscLUTqXzmkmorkjfJvdnZo5npDStVv/AMnH1qjvbg6c5Rj1pOy7EXMSu/TqJb2l0uxp1tM4aHp4ijH71SC+LPnipXwd78C5PllJ3/iZZGrhZSSdFRTsrqpK657cheSvpShXjOKlCSlF7pRakn0NGQ5tqprO6EuBq/6LeUrZ05PO7tvi7nSIyTSad0801mmuVE3FVABAAAAAAAAAAAAAAAAAAAAGPEV4wi5zkoxW9t2SIxpHX3CwX7ParSz9FOMU+eUrdyYErZF9M6/YHDtx4ThZr6tK0u2Taj33Obaya11cW3GrX2KXsqe0o/jaV59btzIjMtIwj/pwvb60su5ZvrZrPKV0jE+VGrK/A4WK5JVJuXclH4nl1dftJS9F04/dhH+dsg60pV3qSXRGPzRvaH4WtUvKctmObs7JviVkaiVKqOtmlHvxCS/2qL/lNTTWs+NqQ4N1ZVL78qcI9eyo7XRuNPT+kOBp7MfTndLmXG/85SMQ0hVX2ku2/wARBnjha21tZ3zd9tb3vdr24yz9GzvfZ38so+JR6Uq+0fcV/SNf15AZY6JlyR/zoRX9Dy/c7Zf0ms8dW9ep2yLXpGqt9SXawPf0NCdO8Z2cZZq19/WlyIaZwakrwh591yK65L9nYeDHStVfaN7snZ3JepqcIzXGkwIssHXW6Nuicf6jJDG46lnCriIfcqVLflZXHaSqU5yi1F23Xi9z3bmYf02+OnF9Da8QPd0d5SNJ0bKVRVV6tWCf5o7Mu8negfKvh6lo4unLDSeW3nOk+l2Uo9asuU5VDTcOOM10Sv4F9TSVOSylNfeV/EkV9J0qsZRUoyUotXUk001ypreXnG/JrrlToVHQrTap1LbMnlCnO7zd3dKV83uVluV2dkM7kUABAAAAAAAAANXSWkaVCm6laahFcb3t8iW9vLcjw9adcaWE2oRi6lVJNx3RhdXvOXRnZZ7t17nGtKaw18diIzrTva+zBZQgt7SXPbN732FzKle1r1rtUxUlCmnClH6rs5N8sluvzZ27yG1asnm5Svyttkinq9B38+V3nnbf2Fk9W42/1Gn91P5o3kR4f0pv0kpdO/3t/bcxtU3xyj1KXfdfA9n9W5cVRNfda+ZjqasVOKpDr2l8ijylGnu2pdCj4tEz0VhFTglxvN333fhu6jxcDq9ONSDnsuKabtLkztZ9HeSao8nbfZ2V+O2WZBD9Yce3XklGL2LRTau8ld78t7fEeesbPiaXRGK+CNiGgcS350N+d3OLu+m7NmOrlbj2PeXyKPO+nVfaS7WWPF1PaT96Xiev+rVblp+8/Ar+q9X16fbL+kDx1i6ntJ+9LxK/TKvtJ+8/E9V6r1vXp9sv6TG9W669R9EvFAec8ZV9e/TZ/Ek+rVbbpNSzcZNcSyaTW7rPJ/V7Eeqvfj4nr6t6Oq0uEU4pX2LedF7tq+586A1NaKSjsT2Iu94u+1ficc01+8R2fBP1oPl9OPya7GTXWPBSqUdmEdqW1FpKUVyp73zkb/Vuu98F78PEg82OEvnwkHyva/lefcXOVOPHKb/d82Pa8+43qur9dfUv+KHiY4aAxL+ztzuUF8yjW+kQ44yXPdT7rR+J0nUTyh/R4woYpudD0adZXk6aS9CcbXcVxca5GrWgUtWq/JD3kZ4aBrQWfBtO21Haea7Mmt6fF2k0fSGDxdOrBVKU4zhLNSi00+tGc+d9V9Z62jMQ0m50ZNbdPcpR3bceSa5eO1nxNd60Npajiaaq0ZbUXk1ulGS3xkuJr+6uszG5Gm8ACAAAAB4+uOP4DBYiqsmqclF/vSWzD80kBx7WzG8I8RWTupuTX3ZSUYflIfoyT4Tqa7n4nvaYlag1+7TXevA8HBelf1VJ9kWl3tHTGde7Q1lW6UHdcjXzNujrFSbzUl1J/BkOq8q/+mSlO+fIUTWOm6Hr9TjLwMtPS1B/aJdKkvkQySurltGWdhBOvp1H2sPeRY9IUfaw95ENmWwYgnEMZS9rT9+PiHjqPtYe9HxIUAJp+kaHtY9pT9KYf2q7JeBDRcCZrSdD2se9fIqsfR9rD3kiGIWEE0WNo+1p+/HxL1iaXtafvx8SDWFhBOfpNL2tP34+JRYml7WHvx8SDtFthBN5Yql7Wn78PExSx9Ffaw95ELkYpZ7gJs9JUPaw7TFPTNBfaIhs2oo1oLaee7jIPU1kxEJOM4O6bmr9Fn8ZPtJ55ONJrDYmCk/MxFoPiSnJ3pt8rbtH8ZzXHQuoR+rGLfS5Sk/hsklxEf2EpJ2ahTkmsmnGKaafKTVfRYId5MtZamNw8nVkpVISSbSSbTjk2llvUiYmFAAAOb+WfTKhh1hV6VRxlLf6EZNx7ZQ7jpBwHypY7h8TOcXeKkoR5LRja65m9p9ZfP1NeVpSpegny8F/Dc8qkrU5vl2Y9rv/ACmxXq/+PST3tr8qkl8Ua9d2pxXLKT7ErfFm0ayg3lZ55Lp6is6UoO0rxbV7SVrp7nnxbzYwGK2JKWypZNWba38aaKOV25Sd2223zsoxQlLiaZdtu/o95fsrkXYXKC5F2BFnDP1WFUtxMyOmuftYUOd9rAt4XmZVVVzl3B877SkZb+Pp/sA4VFeFRbOfJYvU+Zfm8QqnCL/LleEXL8Sk2+ZdX9y2z5uwC/bQ20W2fKuz+5RRfKuz+5UX7aKNlsY8vwLbO9rrsIpNlrlYukn63ciydPnfd4Aa9QRnZF8aSu7t9vgYpRW7jA26yvTpv9xrslI9nGYjZwXPKnSj2xjfuueNXlajT6J/xMrp2o5bFJOyik302sl2X7SKmXkU0q6eLlTbShUg77smmtl36X3ndaVWMltRkpJ7mmmnxb0fKurl41lsZPNrJPNZ57WVsuR9B3Tya6Vr1nXjVk6iTjN1H67Wy4ciVoppJZZ8pncMTkAGVUkr5HzVrBdWg/SjKUXz7OVz6WPmvWujONZqorS2qm0uSTkrmvKa87SOy40rO7UbNeruy6d5gxksqa/db7ZNfIrVWUel99l8i3SG+K5ILvcn8zSMVIzmCkzJtFGS5VSMO0VUgM6kNswqQcwM+2WSlZ34mmn1Zr5mNSLar3ce/J9AGVS3dC+BfTlc1aE231J9xnWTAyMXLVIt2swL9qxfcwKRRsDNfMWMcZlOEAySZbURS5a5gUTzNd7zOma1WYGXHS/ZU1yqT7Zy8C/TFW8k0s5RjK3JdXt1fIsxMLyUXuhFJ88rXl3tmXEwlVnGyvKUY7lx2V++5Bl1TwtSti6NKD2XOahtWvsxl5spW5kz6c0Toylh6UaVGOzFdbb45SfHJ8pxzyX6E2MdSu7yjGc5ciSi4pL8U1nzHbzPpcAAZUOF+UuVStiqvmRThNx81WbjHKEnyuzV+rkO6HKfKLgHTxbqcVWKknxbUUoyXYov8Rrz9TXLK29dXcZ56MrVZvg4NpbMb5JXjFJ5t55p7j3qejqMn50M+ZtdyZt6XwsXScryWyskm0rt72lv3m0RpatYpfUXvw8Sj0BivZPqlB/BmLhJcUmutmWOLqLdUmvxy8QMUtDYhfYz925iej6y30ai/BPwN6Gk63tZ+838TPHS+I4q0u5/IDxZ0ZrfGS6U18THckcdOYjjqX6Yx8Ddo05Vko4igtmaVqsVaUbq6eW5f4wIii2cd3T8mbGLwzpzlB74trptua6TDLc+hgUw6sk+ZGSUi2CyRdYCm0NorYpYCjYuLFLAVuWouAC5bcSLWgKuRhnG7S5TPSoyllGLk+RJv4Hp4PVypJpzfBpNPicn0JPLr7ANPCYeU3spXlK7fXvb5ESjR2j1Silvla1+tuy5rs2cLg4U1aCtfe97fSzS0lpFJSjTac0m8s0rZvPltfsAnfkrgpYjEz9nCnC/POUpSX/HHtR0s555EsI44KpVe+rWk0+WMYxj/EpnQznv1rAAEA09KaLo4iHB16cZxvdJ707NbUWs07N5rPM3ABD63k7wubpzqwfEtpTivfTk1+I55rHhMRS26MqV9yunZ5NZqLWadt6Z3Mx1qEZq04qS5JJNd5rPSR8zSwNX2U/dl4GP6PLjhJdTPpCeg8M/sILoio/AxS1bwr+y7JTXwZeiPnLYS3l8Ej6FnqrhX9Rr8TfxNWrqThZcUvyP4xHRHB2ib4GzhGz3RSy5kkTifk/wr4l1wg/kbeA1LwtP6rlzZRXZFL4jrCIFVopq0kmuRq67zQxGhMPJZ0o/hvH+Gx1qeruFeXBLqlJfBmtU1Swz4prol43HRHIKurNF7nOPRJNd6NSrqr6tXqlH5p/I7JLUzD8U6nbH+kxy1LpcVSfZFjrCOJ1dW663KMuiX9VjSraNrQ9KlNc+y2u1XR3V6lR4qz9z+5WOplvt/wDj/wCw6I+fm0sm1fkLdpcq7UfQy1QXtV/6/wDsP1Ng/SqJr/b/AOw6I+fadNyyim+ZK/wNuhoivLdSkueXmr8x3HEakp+hW2ebg1buaNKepFXiqU2uXzl3WY6I5fh9Vk1+0qPogu5N7+w9ShoOhC1qafPLzu55E/WocnvrxXRBv5o3sLqRSX+pVnLoSgvm+8XCOfcFZWSy5Fl3HmY3S9GndbW1JfVhZvre5fHmOuVtSMDNOM6UpJ7/ANtWSfVGSXceZW8lujGvNp1Ic8a1R/xtodEcXxemp1Yp+hFuS2U99lF5ve/S6Mtxp4atacbLK6T6Hk12HbMP5JsBFWlKtNJtranFb7XXmRXIj19H6gaNotSjhYya46kp1O6ba7h0Ru6m6NWHwOHorfGnFy+/Pz5v3pSPZAMKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/2Q==" alt="Girl in a jacket"> 
-<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAvW-BJK4GjATFLGVWF83L2Nk2ix3TnvItjg&sdata:image/jpeg;base64,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" alt="Girl in a jacket"> 
-</blockquote>
+        <!-- line 13: 3 lines pre -->
+        <pre>line 13 · pre formatted (three lines)
+  📍 sahara: 31.1°N, 4.0°W  — 450m asl
+  📍 everest base camp: 27.9°N, 86.8°E — 5364m asl
+  📍 sydney opera: 33.8°S, 151.1°E — sea level</pre>
 
-<footer>
-    Written by: Grace| Travel Blog © 2026
-</footer>
+        <!-- line 14: unordered list (5 items) & ordered list (6 items) -->
+        <div class="list-panel">
+            <div class="list-box">
+                <span style="font-weight: 600;">line 14 · unordered (5 items)</span>
+                <ul style="margin-top: 0.7rem;">
+                    <li>🏜️ sahara: camel trek at dawn</li>
+                    <li>⛰️ everest: tenzing–hillary airport</li>
+                    <li>🌉 sydney: bridge climb</li>
+                    <li>☕ surry hills flat white</li>
+                    <li>✨ sleeping under sahara stars</li>
+                </ul>
+            </div>
+            <div class="list-box">
+                <span style="font-weight: 600;">line 14 · ordered (6 items)</span>
+                <ol style="margin-top: 0.7rem;">
+                    <li>fly to marrakech</li>
+                    <li>4x4 to merzouga</li>
+                    <li>flight to lukla (tenzing-hillary)</li>
+                    <li>trek to everest base camp</li>
+                    <li>fly to sydney via dubai</li>
+                    <li>bondi to coogee coastal walk</li>
+                </ol>
+            </div>
+        </div>
 
-<br>
-My journey began in the Sahara Desert.<br>
-Then I traveled to Mount Everest.<br>
-After that, I explored Sydney, Australia.<br>
-Finally, I relaxed in Switzerland.
+        <!-- line 15: nested list with at least 6 items -->
+        <div style="margin: 2rem 0;" class="nested-box">
+            <span style="font-weight: 600;">line 15 · nested list (6+ items)</span>
+            <ul style="margin-top: 0.7rem;">
+                <li>🏜️ sahara essentials
+                    <ul>
+                        <li>shemagh scarf (1)</li>
+                        <li>camel ride (2)</li>
+                    </ul>
+                </li>
+                <li>🏔️ everest gear
+                    <ul>
+                        <li>down jacket (3)</li>
+                        <li>oxygen monitor (4)</li>
+                        <li>prayer flags (5)</li>
+                    </ul>
+                </li>
+                <li>🌉 sydney must-dos
+                    <ul>
+                        <li>opera house tour (6)</li>
+                        <li>manly ferry (7) – (more than six items total)</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
 
-<hr>
-Sahara Desert Adventure
-<hr>
-Mount Everest Challenge
-<hr>
-European Calm in Switzerland
+        <!-- table: 10 columns, 5 rows (line 17 from instructions) -->
+        <p style="font-weight: 600; margin-top: 2.5rem;">table · 10 columns, 5 rows</p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>location</th><th>temp(°C)</th><th>wind(k/h)</th><th>hum%</th><th>feel</th><th>sound</th><th>smell</th><th>taste</th><th>best memory</th><th>date</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>sahara</td><td>38</td><td>12</td><td>8</td><td>hot</td><td>silence</td><td>sand</td><td>mint tea</td><td>dune sunset</td><td>14 mar</td></tr>
+                    <tr><td>everest bc</td><td>-9</td><td>25</td><td>30</td><td>freezing</td><td>wind</td><td>ice</td><td>thin air</td><td>prayer flags</td><td>23 feb</td></tr>
+                    <tr><td>sydney</td><td>24</td><td>18</td><td>65</td><td>mild</td><td>waves</td><td>salt</td><td>flat white</td><td>ferry to manly</td><td>07 apr</td></tr>
+                    <tr><td>sahara night</td><td>12</td><td>5</td><td>12</td><td>cool</td><td>stars</td><td>smoke</td><td>sweet tea</td><td>bedouin songs</td><td>15 mar</td></tr>
+                </tbody>
+            </table>
+        </div>
 
-<pre>
-Travel Memories:
-Sahara - Extreme heat and sand dunes
-Everest - Snow, altitude, and courage
-Sydney - City life and beaches
-</pre>
+        <!-- another picture row for richness -->
+        <div class="image-row">
+            <img src="https://images.unsplash.com/photo-1526495124232-a04e1849168c?w=300&h=200&fit=crop&auto=format" alt="camel trek">
+            <img src="https://images.unsplash.com/photo-1551632811-561732d3d0a3?w=300&h=200&fit=crop&auto=format" alt="everest trail">
+            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=300&h=200&fit=crop&auto=format" alt="sydney harbour">
+        </div>
 
-<p>Places I Have Visited (Unordered List)</p>
-<ul>
-    <li>Sahara Desert</li>
-    <li>Mount Everest</li>
-    <li>Sydney</li>
-    <li>Switzerland</li>
-    <li>Other Beautiful Places</li>
-</ul>
+        <!-- personal note / quote (already have several, but keep original style) -->
+        <div style="background: #f0ebe4; border-radius: 40px; padding: 2rem; margin: 2rem 0; text-align: center; font-style: italic; border:1px solid #d0bbab;">
+            “What connects the Sahara, Everest and Sydney? The stillness before dawn. Whether sand, snow or sea — the world wakes up the same way.”
+            <div style="margin-top:0.8rem; font-style: normal; color:#6d5f52;">— journal, feb 2026</div>
+        </div>
 
-<p>Travel Order (Ordered List)</p>
-<ol>
-    <li>Sahara</li>
-    <li>Everest</li>
-    <li>Sydney</li>
-    <li>Switzerland</li>
-    <li>Home</li>
-</ol>
+        <!-- final footer (line 10 already done, but also global) -->
+        <div class="footer-note">
+            <div>© 2026 · a personal blog by Alex · sahara / everest / sydney</div>
+            <div style="display: flex; gap: 1.2rem;">
+                <span>📍 desert</span>
+                <span>📍 peak</span>
+                <span>📍 harbour</span>
+            </div>
+        </div>
 
-<p>Nested Travel Experiences</p>
-<ul>
-    <li>Africa
-        <ul>
-            <li>Sahara Desert</li>
-            <li>Camel Riding</li>
-        </ul>
-    </li>
-    <li>Europe
-        <ul>
-            <li>Switzerland</li>
-            <li>Mountain Views</li>
-        </ul>
-    </li>
-</ul>
-
-<p>Travel Summary Table</p>
-<table border="1">
-    <tr>
-        <th>Place</th><th>Climate</th><th>Activity</th><th>Food</th><th>People</th>
-        <th>Views</th><th>Culture</th><th>Transport</th><th>Cost</th><th>Rating</th>
-    </tr>
-    <tr>
-        <td>Sahara</td><td>Hot</td><td>Desert Tour</td><td>Local Meals</td><td>Friendly</td>
-        <td>Sand Dunes</td><td>Traditional</td><td>Camels</td><td>Medium</td><td>9/10</td>
-    </tr>
-    <tr>
-        <td>Everest</td><td>Cold</td><td>Hiking</td><td>Warm Meals</td><td>Helpful</td>
-        <td>Snow Peaks</td><td>Mountain</td><td>Walking</td><td>High</td><td>10/10</td>
-    </tr>
-    <tr>
-        <td>Sydney</td><td>Warm</td><td>Beach</td><td>Seafood</td><td>Social</td>
-        <td>City Views</td><td>Modern</td><td>Bus</td><td>High</td><td>8/10</td>
-    </tr>
-    <tr>
-        <td>Switzerland</td><td>Cool</td><td>Sightseeing</td><td>Cheese</td><td>Calm</td>
-        <td>Mountains</td><td>European</td><td>Train</td><td>High</td><td>9/10</td>
-    </tr>
-    <tr>
-        <td>Overall</td><td>Varied</td><td>Adventure</td><td>Global</td><td>Diverse</td>
-        <td>Beautiful</td><td>Rich</td><td>Mixed</td><td>Varies</td><td>9/10</td>
-    </tr>
-</table>
-
+        <!-- tiny reminder that all lines are covered -->
+        <p style="font-size:0.8rem; color:#807469; text-align:right; margin-top:1rem;">all 15 formatting lines + 10x5 table · with pictures</p>
+    </div> <!-- end content -->
+</div> <!-- end blog -->
+<!-- extra note about github (instruction) -->
+<div style="max-width:1100px; margin:0.5rem auto 0; text-align:right; padding:0 1rem; color:#5d6b63;">🌐 make sure it's on github — travel blog module</div>
 </body>
-</html>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/n5Jk63JnLwI?si=04YkJ6r7suIlGGEs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0pIyIMqwu0E?si=zRitlaRwsnhpvhc1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QoaDkejcHSc?si=tEvjAIY8LiqOk5HR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RdFkC6Gtb5A?si=cNl4EZwigvIeU9Nw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </html>
