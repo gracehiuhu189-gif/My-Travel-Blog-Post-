@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Album – with Character</title>
+    
+    <!-- EXTERNAL CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- INTERNAL CSS -->
+    <style>
+        h1 {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #3a2e2a;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 5px;
+        }
+        .pet-character {
+            font-style: italic;
+            color: #5d7a5c;
+            margin: 4px 0 0 0;
+            font-size: 0.9em;
+        }
+        .container {
+            border-radius: 20px;
+            transition: transform 0.2s;
+            background-color: #faf0e6;    /* warm off-white */
+        }
+        .container:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <h1>🐕 Meet the Pets 🐈</h1>
+    <p>Each friend has a unique personality!</p>
+
+    <!-- Container 1 – Dog (inline style: blue border) -->
+    <div class="container" style="border: 4px solid #89CFF0;">
+        <img src="https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg" alt="Afghan Hound">
+        <p class="pet-name">🌟 Duke</p>
+        <p class="pet-character">"Elegant, calm, and a bit aloof"</p>
+    </div>
+
+    <!-- Container 2 – Cat (inline style: pink border) -->
+    <div class="container" style="border: 4px solid #FFB6C1;">
+        <img src="https://cataas.com/cat?type=medium" alt="Random cat">
+        <p class="pet-name">🐱 Luna</p>
+        <p class="pet-character">"Curious, playful, loves boxes"</p>
+    </div>
+
+    <!-- Container 3 – Another dog -->
+    <div class="container" style="border: 4px solid #C1E1C1;">   <!-- inline border -->
+        <img src="https://images.dog.ceo/breeds/retriever-golden/n02099601_100.jpg" alt="Golden Retriever">
+        <p class="pet-name">🐶 Charlie</p>
+        <p class="pet-character">"Friendly, loyal, always happy"</p>
+    </div>
+
+    <!-- Container 4 – Another cat (different image) -->
+    <div class="container" style="background-color: #FFF2CC;">   <!-- inline background -->
+        <img src="https://cataas.com/cat/says/Hello?size=small" alt="Cat saying hello">
+        <p class="pet-name">😺 Oliver</p>
+        <p class="pet-character">"Talkative, independent, a foodie"</p>
+    </div>
+
+    <!-- Container 5 – A small pet (rabbit) using a free rabbit image -->
+    <div class="container" style="border: 4px solid #D2B48C;">
+        <img src="https://placekitten.com/300/200?image=12" alt="Bunny rabbit">
+        <p class="pet-name">🐰 Daisy</p>
+        <p class="pet-character">"Gentle, shy, loves to hop"</p>
+    </div>
+</body>
+</html>
