@@ -1,80 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
+<style>
+body {
+    font-family: Arial, sans-serif;
 
-            /* Background Colour */
-            background-color: #dfe6e9; /* Light grey-blue */
+    /* Background colour */
+    background-color: #dfe6e9;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-        .form-container {
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            width: 300px;
-        }
+.form-container {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 450px; /* Wider for sideways layout */
+}
 
-        h2 {
-            text-align: center;
-        }
+h2 {
+    text-align: center;
+}
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+/* Sideways input layout */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
 
-        button {
-            width: 100%;
-            padding: 10px;
+.form-row input {
+    width: 100%;
+}
 
-            /* Grey Submit Button */
-            background: #808080; /* Grey */
-            color: white;
+/* Full-width inputs */
+.full-width {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+/* Grey submit button */
+button {
+    width: 100%;
+    padding: 10px;
+    background: #808080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-        button:hover {
-            background: #666666; /* Darker grey on hover */
-        }
-    </style>
+button:hover {
+    background: #666666;
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="form-container">
-    <h2>Register</h2>
 
-    <form action="process.php" method="POST">
-        <input type="text" name="first_name" placeholder="First Name" required>
+<h2>Register</h2>
 
-        <input type="text" name="last_name" placeholder="Last Name" required>
+<form action="process.php" method="POST">
 
-        <input type="email" name="email" placeholder="Email Address" required>
+    <!-- First and Last Name Sideways -->
+    <div class="form-row">
+        <input type="text" name="first_name" placeholder="First Name" required class="full-width">
 
-        <input type="password" name="password" placeholder="Password" required>
+        <input type="text" name="last_name" placeholder="Last Name" required class="full-width">
+    </div>
 
-        <button type="submit">Submit</button>
-    </form>
+    <!-- Email -->
+    <input type="email" name="email" placeholder="Email Address" required class="full-width">
+
+    <!-- Password -->
+    <input type="password" name="password" placeholder="Password" required class="full-width">
+
+    <!-- Submit -->
+    <button type="submit">Submit</button>
+
+</form>
 
 </div>
 
 </body>
 </html>
+
+     
