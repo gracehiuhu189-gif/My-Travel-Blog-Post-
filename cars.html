@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Velocity Grid | Best Performing Cars 2020</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      background: #f7f9fc;
+      color: #1e2a3e;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .top-bar {
+      background: #0b1c2c;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #e2e9f0, #ffffff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: #eef2f5;
+      text-decoration: none;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      color: #ffb347;
+      transform: translateY(-1px);
+    }
+
+    .search-area {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      background: #1f2f3e;
+      padding: 0.4rem 1rem;
+      border-radius: 60px;
+    }
+
+    .search-area input {
+      background: transparent;
+      border: none;
+      padding: 0.5rem 0;
+      color: white;
+      font-size: 0.9rem;
+      outline: none;
+      width: 180px;
+    }
+
+    .search-area input::placeholder {
+      color: #9aaebf;
+    }
+
+    .search-area button {
+      background: #ffb347;
+      border: none;
+      border-radius: 40px;
+      padding: 0.4rem 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #1e2a3e;
+    }
+
+    .search-area button:hover {
+      background: #ff9f1c;
+      transform: scale(0.97);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(145deg, #1f3b4c, #2b5876);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .hero .badge-year {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #ff8c42;
+      margin: 0.5rem 0 0.8rem;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      color: #2c3e50;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 2.5rem 0 1.2rem 0;
+      border-left: 5px solid #ff8c42;
+      padding-left: 1rem;
+    }
+
+    .grid-6, .grid-4, .grid-extra {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.25s ease, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 28px -12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 1rem 1.2rem 1.2rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-content p {
+      color: #5a6e7c;
+      font-size: 0.85rem;
+    }
+
+    .video-frame {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .tables-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .table-wrapper {
+      flex: 1;
+      min-width: 280px;
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.05);
+      overflow-x: auto;
+      padding: 0.2rem 0;
+    }
+
+    .table-wrapper h3 {
+      padding: 1rem 1.2rem 0;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid #e9edf2;
+    }
+
+    th {
+      background-color: #f0f4f9;
+      font-weight: 700;
+      color: #1e3a5f;
+    }
+
+    .info-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.6rem;
+      flex: 1;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.03);
+      transition: all 0.2s;
+      border: 1px solid #eef2f8;
+    }
+
+    .info-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .testimonial-item {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+
+    .testimonial-item p:first-child {
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .testimonial-item span {
+      font-size: 0.8rem;
+      color: #ff8c42;
+    }
+
+    footer {
+      background: #0b1c2c;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+      font-size: 0.8rem;
+    }
+
+    .no-result-message {
+      background: #f0eef7;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 2rem;
+      width: 100%;
+      font-weight: 500;
+      color: #2c3e66;
+    }
+
+    .hidden-item {
+      display: none !important;
+    }
+
+    .row-hidden {
+      display: none !important;
+    }
+
+    button, input {
+      font-family: inherit;
+    }
+
+    @media (max-width: 680px) {
+      .nav-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-area {
+        justify-content: space-between;
+      }
+      .search-area input {
+        width: 100%;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="container nav-wrapper">
+    <div class="logo">⚡ DRIVEN·2020</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#contacts">Contacts</a>
+      <a href="#testimonials">Testimonials</a>
+    </div>
+    <div class="search-area">
+      <input type="text" id="searchInput" placeholder="Search models, cars..." aria-label="Search cars">
+      <button id="searchBtn">🔍 Find</button>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+  <section id="home">
+    <div class="hero">
+      <h1>Our heading</h1>
+      <div class="badge-year">🏆 Best performing 2020 🏁</div>
+      <p>Unrivaled engineering, record-breaking speed, and futuristic design. The 2020 automotive elite delivered breathtaking performance — from electric hypercars to refined V8 monsters. Explore the machines that dominated dynos, tracks, and roads worldwide.</p>
+    </div>
+  </section>
+
+  <!-- IMAGES SECTION: 8 iconic performance cars -->
+  <div>
+    <h2 class="section-title">📸 Iconic 2020 Performance Models</h2>
+    <div class="grid-6" id="imageGallery">
+      <div class="card image-card" data-name="ferrari f8 tributo">
+        <img class="card-img" src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=500&h=350&fit=crop" alt="Ferrari F8 Tributo">
+        <div class="card-content"><h3>Ferrari F8 Tributo</h3><p>710 hp · 2.9s 0-100 km/h · V8 Twin-Turbo</p></div>
+      </div>
+      <div class="card image-card" data-name="lamborghini huracan evo">
+        <img class="card-img" src="https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=500&h=350&fit=crop" alt="Lamborghini Huracan EVO">
+        <div class="card-content"><h3>Lamborghini Huracán EVO</h3><p>631 hp · V10 · 3.0s 0-100 km/h</p></div>
+      </div>
+      <div class="card image-card" data-name="porsche 911 turbo s">
+        <img class="card-img" src="https://images.unsplash.com/photo-1503376780354-7f2e2e4d3cf2?w=500&h=350&fit=crop" alt="Porsche 911 Turbo S">
+        <div class="card-content"><h3>Porsche 911 Turbo S</h3><p>640 hp · 2.6s 0-100 · AWD beast</p></div>
+      </div>
+      <div class="card image-card" data-name="tesla model s performance plaid">
+        <img class="card-img" src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=500&h=350&fit=crop" alt="Tesla Model S Plaid">
+        <div class="card-content"><h3>Tesla Model S Plaid</h3><p>1020 hp · 1.99s 0-100 · Tri-Motor</p></div>
+      </div>
+      <div class="card image-card" data-name="ford mustang shelby gt500">
+        <img class="card-img" src="https://images.unsplash.com/photo-1584345604476-8ec5e12e42dd?w=500&h=350&fit=crop" alt="Ford Mustang Shelby GT500">
+        <div class="card-content"><h3>Ford Mustang Shelby GT500</h3><p>760 hp · Supercharged V8 · 290 km/h top</p></div>
+      </div>
+      <div class="card image-card" data-name="bmw m8 competition">
+        <img class="card-img" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=500&h=350&fit=crop" alt="BMW M8 Competition">
+        <div class="card-content"><h3>BMW M8 Competition</h3><p>617 hp · V8 · 3.2s 0-100 · Luxury GT</p></div>
+      </div>
+      <!-- Two additional images to enhance gallery -->
+      <div class="card image-card" data-name="audi rs7 performance">
+        <img class="card-img" src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=500&h=350&fit=crop" alt="Audi RS7 Performance">
+        <div class="card-content"><h3>Audi RS7 Performance</h3><p>591 hp · V8 mild-hybrid · 3.6s 0-100</p></div>
+      </div>
+      <div class="card image-card" data-name="mercedes amg gt63s">
+        <img class="card-img" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=500&h=350&fit=crop" alt="Mercedes-AMG GT63 S">
+        <div class="card-content"><h3>Mercedes-AMG GT63 S</h3><p>630 hp · V8 · 3.2s 0-100 · 4-door coupe</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO SECTION: 6 performance videos -->
+  <div>
+    <h2 class="section-title">🎬 Raw Performance Videos</h2>
+    <div class="grid-6" id="videoGallery">
+      <div class="card video-card" data-name="ferrari f8 tributo review">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/YeYF6iPIT_Q" title="Ferrari F8 Tributo review" allowfullscreen loading="lazy"></iframe></div>
+        <div class="card-content"><h3>Ferrari F8 Tributo • Pure Sound</h3><p>Thrilling V8 symphony & track dominance</p></div>
+      </div>
+      <div class="card video-card" data-name="lamborghini huracan evo drift">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/2Q_ZzBGPdqE" title="Lamborghini Huracan EVO Drift" allowfullscreen loading="lazy"></iframe></div>
+        <div class="card-content"><h3>Lamborghini Huracán EVO</h3><p>Epic drift & AWD agility</p></div>
+      </div>
+      <div class="card video-card" data-name="porsche 911 turbo s acceleration">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/Q7CzNfXqBHU" title="Porsche 911 Turbo S acceleration" allowfullscreen loading="lazy"></iframe></div>
+        <div class="card-content"><h3>Porsche 911 Turbo S</h3><p>Launch control & hypercar slayer</p></div>
+      </div>
+      <div class="card video-card" data-name="tesla model s plaid track">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/5qap5aO4i9A" title="Tesla Model S Plaid track mode" allowfullscreen loading="lazy"></iframe></div>
+        <div class="card-content"><h3>Tesla Model S Plaid</h3><p>Electric insanity • 0-100 in under 2 sec</p></div>
+      </div>
+      <!-- Two extra video reviews -->
+      <div class="card video-card" data-name="audi rs7 performance review">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/KCnI4Ns56FQ" title="Audi RS7 Performance review" allowfullscreen loading="lazy"></iframe></div>
+        <div class="card-content"><h3>Audi RS7 Performance</h3><p>V8 elegance meets brutal acceleration</p></div>
+      </div>
+      <div class="card video-card" data-name="mercedes amg gt63s review">
+        <div class="video-frame"><iframe src="https://www.youtube.com/embed/wx6iTbQCFcE" title="Mercedes-AMG GT63 S review" allowfullscreen loading="lazy"></iframe></div>
+        <div class="card-content"><h3>AMG GT63 S</h3><p>Four-door supercar with V8 roar</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLES SECTION: two tables -->
+  <div>
+    <h2 class="section-title">📊 Ultimate 2020 Performance Data</h2>
+    <div class="tables-grid" id="tablesContainer">
+      <div class="table-wrapper">
+        <h3>🔥 Top Speed & Acceleration</h3>
+        <table id="performanceTable">
+          <thead><tr><th>Model</th><th>Horsepower</th><th>0-100 km/h</th><th>Top Speed</th></tr></thead>
+          <tbody>
+            <tr><td>Ferrari F8 Tributo</td><td>710 hp</td><td>2.9 s</td><td>340 km/h</td></tr>
+            <tr><td>Lamborghini Huracán EVO</td><td>631 hp</td><td>3.0 s</td><td>325 km/h</td></tr>
+            <tr><td>Porsche 911 Turbo S</td><td>640 hp</td><td>2.6 s</td><td>330 km/h</td></tr>
+            <tr><td>Tesla Model S Plaid</td><td>1020 hp</td><td>1.99 s</td><td>322 km/h</td></tr>
+            <tr><td>Ford Mustang GT500</td><td>760 hp</td><td>3.3 s</td><td>290 km/h</td></tr>
+            <tr><td>Audi RS7 Performance</td><td>591 hp</td><td>3.6 s</td><td>305 km/h</td></tr>
+            <tr><td>Mercedes-AMG GT63 S</td><td>630 hp</td><td>3.2 s</td><td>315 km/h</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-wrapper">
+        <h3>⚡ Efficiency & User Rating</h3>
+        <table id="efficiencyTable">
+          <thead><tr><th>Model</th><th>Fuel/MPGe</th><th>CO₂ (g/km)</th><th>Owner Rating</th></tr></thead>
+          <tbody>
+            <tr><td>Ferrari F8 Tributo</td><td>15/19 mpg</td><td>332</td><td>4.8 ★</td></tr>
+            <tr><td>Lamborghini Huracán EVO</td><td>13/18 mpg</td><td>345</td><td>4.7 ★</td></tr>
+            <tr><td>Porsche 911 Turbo S</td><td>17/22 mpg</td><td>280</td><td>4.9 ★</td></tr>
+            <tr><td>Tesla Model S Plaid</td><td>101 MPGe</td><td>0</td><td>4.9 ★</td></tr>
+            <tr><td>Ford Mustang GT500</td><td>12/18 mpg</td><td>370</td><td>4.6 ★</td></tr>
+            <tr><td>Audi RS7 Performance</td><td>15/22 mpg</td><td>260</td><td>4.7 ★</td></tr>
+            <tr><td>Mercedes-AMG GT63 S</td><td>14/20 mpg</td><td>295</td><td>4.8 ★</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- About, Contacts, Testimonials -->
+  <div class="info-row" id="about">
+    <div class="info-card">
+      <h3>🏁 About Velocity Index</h3>
+      <p>We rank the most thrilling, fastest, and technologically advanced cars of 2020. Our data combines real-world tests, manufacturer claims, and driver feedback. This year’s best performing lineup redefined boundaries in electric, hybrid and combustion segments.</p>
+      <p style="margin-top:12px">⚡ <strong>Mission:</strong> Deliver transparent automotive insights for enthusiasts and buyers alike.</p>
+    </div>
+    <div class="info-card" id="contacts">
+      <h3>📞 Contacts & Inquiries</h3>
+      <p>📍 Detroit Speed Garage — online hub<br>📧 drive@velocity2020.com<br>📞 +1 (800) 492-2020<br>🕒 Mon-Fri: 9AM – 6PM EST</p>
+      <p>💬 Let’s talk about performance, reviews, or collaborations.</p>
+    </div>
+  </div>
+
+  <div id="testimonials">
+    <h2 class="section-title">⭐ Rave Reviews from Owners</h2>
+    <div class="info-row" style="margin-top:0">
+      <div class="info-card">
+        <div class="testimonial-item"><p>“The Porsche 911 Turbo S is a masterpiece – daily driving meets supercar slayer. Best performing car I've ever owned.”</p><span>— Jordan M., Porsche owner</span></div>
+        <div class="testimonial-item"><p>“Tesla Model S Plaid literally pins you to the seat. Ludicrous speed aside, it's the future of automotive excellence.”</p><span>— Elena R., EV enthusiast</span></div>
+      </div>
+      <div class="info-card">
+        <div class="testimonial-item"><p>“Ferrari F8 Tributo: intoxicating sound and razor-sharp handling. Best performing supercar of 2020 without compromise.”</p><span>— Marco L., Ferrari collector</span></div>
+        <div class="testimonial-item"><p>“Lamborghini Huracán EVO is pure drama. The V10, the design, the attitude — absolutely iconic.”</p><span>— Christine T., car journalist</span></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 DRIVEN·2020 — Best Performing Cars of the Year | Concept layout based on original design specifications | All placeholder media for demonstration</p>
+</footer>
+
+<script>
+  (function() {
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const imageCards = document.querySelectorAll('.image-card');
+    const videoCards = document.querySelectorAll('.video-card');
+    const perfRows = document.querySelectorAll('#performanceTable tbody tr');
+    const effRows = document.querySelectorAll('#efficiencyTable tbody tr');
+    const allTableRows = [...perfRows, ...effRows];
+
+    function performSearch() {
+      const term = searchInput.value.trim().toLowerCase();
+      
+      imageCards.forEach(card => {
+        const name = card.getAttribute('data-name') || '';
+        const title = card.querySelector('h3')?.innerText.toLowerCase() || '';
+        const desc = card.querySelector('p')?.innerText.toLowerCase() || '';
+        const match = name.includes(term) || title.includes(term) || desc.includes(term);
+        card.classList.toggle('hidden-item', term !== '' && !match);
+      });
+      
+      videoCards.forEach(card => {
+        const name = card.getAttribute('data-name') || '';
+        const title = card.querySelector('h3')?.innerText.toLowerCase() || '';
+        const desc = card.querySelector('p')?.innerText.toLowerCase() || '';
+        const match = name.includes(term) || title.includes(term) || desc.includes(term);
+        card.classList.toggle('hidden-item', term !== '' && !match);
+      });
+      
+      allTableRows.forEach(row => {
+        if (term === '') {
+          row.classList.remove('row-hidden');
+          return;
+        }
+        let match = false;
+        row.querySelectorAll('td').forEach(cell => {
+          if (cell.innerText.toLowerCase().includes(term)) match = true;
+        });
+        row.classList.toggle('row-hidden', !match);
+      });
+      
+      const anyVisibleImage = [...imageCards].some(c => !c.classList.contains('hidden-item'));
+      const anyVisibleVideo = [...videoCards].some(c => !c.classList.contains('hidden-item'));
+      const anyVisibleRow = [...allTableRows].some(r => !r.classList.contains('row-hidden'));
+      
+      let msgDiv = document.getElementById('dynamicNoResultMsg');
+      if (!anyVisibleImage && !anyVisibleVideo && !anyVisibleRow && term !== '') {
+        if (!msgDiv) {
+          msgDiv = document.createElement('div');
+          msgDiv.id = 'dynamicNoResultMsg';
+          msgDiv.className = 'no-result-message';
+          const tablesSection = document.querySelector('.tables-grid');
+          tablesSection?.parentNode?.insertBefore(msgDiv, tablesSection);
+        }
+        msgDiv.innerHTML = `🔍 No cars or models match "${term}". Try "ferrari", "porsche", "tesla", "audi", or "gt63".`;
+        msgDiv.style.display = 'block';
+      } else if (msgDiv) {
+        msgDiv.style.display = 'none';
+      }
+    }
+    
