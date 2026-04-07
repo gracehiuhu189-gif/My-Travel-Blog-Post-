@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Giovanni Clothing</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- MENU -->
+
+<div class="menu">
+
+<a href="index.html">Home</a>
+<a href="men.html">Men</a>
+<a href="women.html">Women</a>
+<a href="videos.html">Videos</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+<!-- SLIDESHOW -->
+
+<div class="slideshow">
+
+<img class="slides"
+src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg">
+
+<img class="slides"
+src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg">
+
+<img class="slides"
+src="https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg">
+
+<img class="slides"
+src="https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg">
+
+<img class="slides"
+src="https://images.pexels.com/photos/1126993/pexels-photo-1126993.jpeg">
+
+</div>
+
+<script>
+
+let slideIndex = 0;
+
+function showSlides(){
+
+let slides=document.getElementsByClassName("slides");
+
+for(let i=0;i<slides.length;i++){
+slides[i].style.display="none";
+}
+
+slideIndex++;
+
+if(slideIndex>slides.length){
+slideIndex=1;
+}
+
+slides[slideIndex-1].style.display="block";
+
+setTimeout(showSlides,3000);
+
+}
+
+showSlides();
+
+</script>
+
+<!-- TWO COLUMNS -->
+
+<div class="container">
+
+<div class="left">
+
+<h1>Welcome to Giovanni Clothing</h1>
+
+<p>Giovanni Clothing is a modern fashion brand offering stylish outfits.</p>
+
+<p>Our brand focuses on quality materials and fashionable designs.</p>
+
+<p>We provide casual and official wear for different occasions.</p>
+
+<p>Giovanni Clothing represents confidence and elegance.</p>
+
+<p>Explore our latest collections and discover your perfect look.</p>
+
+<h2>Our Products</h2>
+
+<ul>
+
+<li>Men Wear
+<ul>
+<li>Shirts</li>
+<li>Trousers</li>
+<li>Jackets</li>
+</ul>
+</li>
+
+<li>Women Wear
+<ul>
+<li>Dresses</li>
+<li>Skirts</li>
+<li>Tops</li>
+</ul>
+</li>
+
+</ul>
+
+</div>
+
+<div class="right">
+
+<img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg">
+
+<img src="https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg">
+
+<img src="https://images.pexels.com/photos/1126993/pexels-photo-1126993.jpeg">
+
+</div>
+
+</div>
+
+<footer>
+
+<p>© 2026 Giovanni Clothing Brand</p>
+
+</footer>
+
+</body>
+
+</html>
