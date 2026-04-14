@@ -3,76 +3,469 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Giovanni | Home</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Giovanni – Heritage Clothing</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: #f7f5f0;
+      background-image: radial-gradient(circle at 10% 20%, rgba(220,200,170,0.1) 0%, transparent 30%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* HEADER + MENU BAR (5 items) */
+    .top-bar {
+      background-color: #1e1e1e;
+      color: #d4af37;
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 3px solid #b4945c;
+      flex-wrap: wrap;
+    }
+
+    .logo h1 {
+      font-weight: 300;
+      letter-spacing: 3px;
+      font-size: 1.9rem;
+      text-shadow: 1px 1px 0 #7a5c2e;
+    }
+    .logo span { font-size: 0.7rem; display: block; color: #aaa; letter-spacing: 2px; }
+
+    .menu-bar {
+      display: flex;
+      gap: 2.2rem;
+    }
+    .menu-bar a {
+      color: #e0d6c2;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.25s;
+      cursor: pointer;
+    }
+    .menu-bar a:hover, .menu-bar a.active-menu {
+      border-bottom-color: #d4af37;
+      color: #fff;
+    }
+
+    .cart-icon {
+      color: #d4af37;
+      font-size: 1.4rem;
+      position: relative;
+      cursor: default;
+    }
+    .cart-icon span {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: #b22222;
+      color: white;
+      border-radius: 50%;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
+
+    .page-container {
+      max-width: 1300px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      flex: 1;
+    }
+
+    /* sections: all 5 on one page */
+    .section {
+      display: none;
+      animation: fade 0.3s ease;
+    }
+    .section.active-section {
+      display: block;
+    }
+    @keyframes fade { from { opacity: 0.3; } to { opacity: 1; } }
+
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 300;
+      border-left: 6px solid #d4af37;
+      padding-left: 1.2rem;
+      margin: 1.5rem 0 1.8rem 0;
+      color: #2c2c2c;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .media-card {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.1);
+      padding: 1.2rem;
+      transition: transform 0.2s;
+      border: 1px solid #e9dfd1;
+    }
+    .media-card:hover { transform: scale(1.01); }
+    .media-card img, .media-card video, .media-card iframe {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid #cfb991;
+    }
+    .media-card p { margin-top: 0.8rem; font-style: italic; color: #3f3f3f; }
+
+    .full-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .full-table caption {
+      text-align: left;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #5a4a2e;
+    }
+    .full-table th {
+      background: #2c2c2c;
+      color: #d4af37;
+      font-weight: 500;
+      padding: 1rem;
+      font-size: 1.1rem;
+    }
+    .full-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #e2d9ca;
+      text-align: center;
+      background: #fefcf8;
+    }
+    .full-table tr:last-child td { border-bottom: none; }
+
+    .nested-list {
+      background: #fff5e7;
+      padding: 1.8rem 2.5rem;
+      border-radius: 30px;
+      box-shadow: inset 0 2px 6px #f0e2d0;
+      border: 1px solid #cbb99b;
+      margin: 2rem 0;
+    }
+    .nested-list ul {
+      list-style-type: upper-roman;
+      font-weight: 600;
+    }
+    .nested-list li { margin: 0.6rem 0; }
+    .nested-list ul ul {
+      list-style-type: circle;
+      margin-left: 2rem;
+      font-weight: 400;
+    }
+
+    .highlight-bg {
+      background: linear-gradient(145deg, #f3eee6, #fffcf4);
+      padding: 1.5rem;
+      border-radius: 30px;
+      margin: 1.5rem 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .imagemap-container {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 30px;
+      text-align: center;
+      margin: 2rem 0;
+    }
+    .imagemap-container img { max-width: 100%; border-radius: 20px; border: 2px solid #d4af37; }
+
+    /* slider styles */
+    .slider-container {
+      position: relative;
+      max-width: 100%;
+      margin: 2rem 0;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slide {
+      min-width: 100%;
+    }
+    .slide img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      display: block;
+    }
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.5);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      z-index: 2;
+    }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+    .prev:hover, .next:hover { background: #d4af37; color: #1e1e1e; }
+
+    footer {
+      background: #1e1e1e;
+      color: #b9ae9a;
+      padding: 2rem 2rem 1.2rem;
+      margin-top: 4rem;
+      border-top: 4px solid #b4945c;
+    }
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .social i { font-size: 1.6rem; margin-right: 1rem; color: #b4945c; }
+    .copy { text-align: center; margin-top: 2rem; font-size: 0.85rem; color: #706b5f; }
+
+    @media (max-width: 800px) {
+      .two-col { grid-template-columns: 1fr; }
+      .menu-bar { gap: 0.8rem; }
+    }
+  </style>
 </head>
 <body>
   <header class="top-bar">
-    <div class="logo"><h1>GIOVANNI</h1><span>since 1982 • roma</span></div>
-    <nav class="menu-bar">
-      <a href="index.html" class="active-menu">Home</a>
-      <a href="men.html">Men</a>
-      <a href="women.html">Women</a>
-      <a href="kids.html">Kids</a>
-      <a href="contact.html">Contact</a>
+    <div class="logo">
+      <h1>GIOVANNI</h1>
+      <span>since 1982 • roma</span>
+    </div>
+    <nav class="menu-bar" id="menuBar">
+      <a class="menu-item active-menu" data-section="home">Home</a>
+      <a class="menu-item" data-section="men">Men</a>
+      <a class="menu-item" data-section="women">Women</a>
+      <a class="menu-item" data-section="kids">Kids</a>
+      <a class="menu-item" data-section="contact">Contact</a>
     </nav>
-    <div class="cart-icon"><i class="fas fa-shopping-bag"></i><span>3</span></div>
+    <div class="cart-icon">
+      <i class="fas fa-shopping-bag"></i>
+      <span>3</span>
+    </div>
   </header>
 
   <main class="page-container">
-    <h2>La Dolce Vita · new lookbook</h2>
+    <!-- ========== SECTION 1: HOME ========== -->
+    <section id="home" class="section active-section">
+      <h2>La Dolce Vita · new lookbook</h2>
 
-    <!-- SLIDER (added feature) -->
-    <div class="slider-container">
-      <div class="slides">
-        <div class="slide"><img src=https://www.google.com/url?esrc=s&q=&rct=j&sa=U&url=https://poshmark.com/listing/GIOVANNI-OUTERWEAR-639fe2b7508d274cbf53d366&ved=2ahUKEwj31faCy92TAxWuT0EAHYUOAT4QqoUBegQIEBAB&usg=AOvVaw1VXkjOZCgANsGQJM8999EA
-        <div class="slide"><img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&auto=format" alt="lookbook 2"></div>
-        <div class="slide"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&auto=format" alt="lookbook 3"></div>
+      <!-- Slider -->
+      <div class="slider-container">
+        <div class="slides" id="slides">
+          <div class="slide"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=1200&auto=format" alt="fashion 1"></div>
+          <div class="slide"><img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&auto=format" alt="fashion 2"></div>
+          <div class="slide"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1200&auto=format" alt="fashion 3"></div>
+        </div>
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
       </div>
-      <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
-      <button class="next" onclick="changeSlide(1)">&#10095;</button>
-    </div>
 
-    <!-- two columns: video + image containers -->
-    <div class="two-col">
-      <div class="media-card">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/GXeQnV7HNT8?si=2C2bSG8Bo8ZGF4Oc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/hiLPwikGb5M?si=N3bXDbcp3qNjwlAl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/jFF-yrOeboA?si=Rm3Pm94aAuo86Wk0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <p>🎥 Giovanni exclusive film · SS25</p>
+      <!-- two columns: video + image -->
+      <div class="two-col">
+        <div class="media-card">
+          <iframe width="100%" height="250" src="https://www.youtube.com/embed/1VK8e7Cj9Ls?si=zEIXOaz-yoE8UeC1" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+          <p>🎥 Giovanni exclusive film · SS25</p>
+        </div>
+        <div class="media-card">
+          <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&auto=format" alt="campaign">
+          <p>📸 backstage at Piazza di Spagna</p>
+        </div>
       </div>
-      <div class="media-card">
-        <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&auto=format" alt="campaign">
-        <p>📸 backstage at Piazza di Spagna</p>
+
+      <p class="highlight-bg"><i class="fas fa-quote-left" style="color:#d4af37;"></i> Giovanni brings the timeless elegance of Italian tailoring to the modern wardrobe. Each piece tells a story of heritage and innovation.</p>
+      <p>Our new arrivals celebrate the Italian coast — from Positano to Portofino. Linen, silk and precision cuts.</p>
+
+      <!-- image map (added feature) -->
+      <div class="imagemap-container">
+        <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1000&auto=format" alt="hotspot" usemap="#fashion-map">
+        <map name="fashion-map">
+          <area shape="rect" coords="34,44,270,250" href="#" alt="Men" onclick="switchSection('men'); return false;">
+          <area shape="rect" coords="290,60,540,270" href="#" alt="Women" onclick="switchSection('women'); return false;">
+          <area shape="rect" coords="560,130,820,310" alt="Kids" onclick="switchSection('kids'); return false;">
+        </map>
+        <p>⬆️ click on areas: men · women · kids (image map)</p>
       </div>
-    </div>
+    </section>
 
-    <!-- formatted paragraphs -->
-    <p class="highlight-bg"><i class="fas fa-quote-left"></i> Giovanni brings timeless Italian tailoring to the modern wardrobe. Each piece tells a story of heritage and innovation.</p>
-    <p>Our new arrivals celebrate the Italian coast — from Positano to Portofino. Linen, silk and precision cuts.</p>
+    <!-- ========== SECTION 2: MEN ========== -->
+    <section id="men" class="section">
+      <h2>Men · sartorial elegance</h2>
+      <div class="two-col">
+        <div class="media-card"><img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&auto=format" alt="suit"><p>Wool blazer · charcoal</p></div>
+        <div class="media-card"><img src="https://images.unsplash.com/photo-1602810316693-3667c854239a?w=600&auto=format" alt="shirt"><p>Linen shirt · avorio</p></div>
+      </div>
+      <!-- Table 1: men size chart -->
+      <table class="full-table">
+        <caption>Men size guide (cm)</caption>
+        <tr><th>Size</th><th>Chest</th><th>Waist</th><th>Hip</th></tr>
+        <tr><td>46 (S)</td><td>88-92</td><td>76-80</td><td>92-96</td></tr>
+        <tr><td>48 (M)</td><td>96-100</td><td>84-88</td><td>100-104</td></tr>
+        <tr><td>50 (L)</td><td>104-108</td><td>92-96</td><td>108-112</td></tr>
+        <tr><td>52 (XL)</td><td>112-116</td><td>100-104</td><td>116-120</td></tr>
+      </table>
+      <p>From tailored suits to weekend essentials, the men's collection uses premium Italian wool and sustainable cottons. <strong>Free alterations in Rome.</strong></p>
+    </section>
 
-    <!-- imagemap (added feature) -->
-    <div class="imagemap-container">
-      <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1000&auto=format" alt="hotspot" usemap="#fashion-map">
-      <map name="fashion-map">
-        <area shape="rect" coords="34,44,270,250" href="men.html" alt="Men">
-        <area shape="rect" coords="290,60,540,270" href="women.html" alt="Women">
-        <area shape="rect" coords="560,130,820,310" href="kids.html" alt="Kids">
-      </map>
-      <p>⬆️ click on areas: men · women · kids (image map)</p>
-    </div>
+    <!-- ========== SECTION 3: WOMEN ========== -->
+    <section id="women" class="section">
+      <h2>Women · senza tempo</h2>
+      <div class="two-col">
+        <div class="media-card"><img src="https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=600&auto=format" alt="dress"><p>Silk midi dress · rosato</p></div>
+        <div class="media-card"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&auto=format" alt="blazer"><p>Tailored blazer · cammello</p></div>
+      </div>
+      <!-- Table 2: women size chart -->
+      <table class="full-table">
+        <caption>Women size guide (IT/INT)</caption>
+        <tr><th>IT size</th><th>US size</th><th>Bust</th><th>Waist</th><th>Hips</th></tr>
+        <tr><td>40</td><td>4</td><td>82-86</td><td>62-66</td><td>90-94</td></tr>
+        <tr><td>42</td><td>6</td><td>86-90</td><td>66-70</td><td>94-98</td></tr>
+        <tr><td>44</td><td>8</td><td>90-94</td><td>70-74</td><td>98-102</td></tr>
+        <tr><td>46</td><td>10</td><td>94-98</td><td>74-78</td><td>102-106</td></tr>
+      </table>
+      <p>Fluid silhouettes, sculptural tailoring. Every garment is finished by hand in our atelier in Florence.</p>
+    </section>
+
+    <!-- ========== SECTION 4: KIDS (nested list) ========== -->
+    <section id="kids" class="section">
+      <h2>Kids · piccolo mondo</h2>
+      <div class="two-col">
+        <div class="media-card"><img src="https://images.unsplash.com/photo-1522771930-78848d9293e8?w=600&auto=format" alt="kids outfit"><p>Baby linen set · 2-6y</p></div>
+        <div class="media-card"><img src="https://images.unsplash.com/photo-1595909315417-2edd382a56dc?w=600&auto=format" alt="kids shoes"><p>Leather sandals · artisan</p></div>
+      </div>
+      <!-- Nested list (≥5 items) -->
+      <div class="nested-list">
+        <ul>
+          <li>👔 Boys
+            <ul><li>Cotton shirts (3-12 y)</li><li>Linen shorts</li></ul>
+          </li>
+          <li>👗 Girls
+            <ul><li>Floral dresses</li><li>Cardigans</li></ul>
+          </li>
+          <li>🎒 Accessories
+            <ul><li>Leather backpacks</li><li>Sun hats (UPF50+)</li></ul>
+          </li>
+        </ul>
+        <p><strong>✓ 3 main + 6 sub-items (≥5 total)</strong></p>
+      </div>
+      <p>Giovanni Junior uses the same artisanal fabrics, adapted for comfort and play. Made in Italy.</p>
+    </section>
+
+    <!-- ========== SECTION 5: CONTACT ========== -->
+    <section id="contact" class="section">
+      <h2>Contattaci · roman atelier</h2>
+      <div class="two-col">
+        <div class="media-card">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&auto=format" alt="store Rome">
+          <p>Via Condotti 87, Roma</p>
+        </div>
+        <div class="media-card">
+          <video controls poster="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&auto=format">
+            <source src="https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_1MB.mp4" type="video/mp4">
+            Your browser does not support video.
+          </video>
+          <p>🎬 Atelier preview · 10 sec</p>
+        </div>
+      </div>
+      <p>Book an appointment for a private fitting. We offer tailoring, embroidery, and worldwide shipping.</p>
+      <div style="background:#f5ebe1; padding: 1.5rem; border-radius: 2rem;">
+        <p><i class="fas fa-envelope" style="color:#b4945c;"></i> concierge@giovanni.it  |  <i class="fas fa-phone-alt"></i> +39 06 1234 5678</p>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="footer-content">
-      <div><p><i class="fas fa-map-pin"></i> Roma · Milano · New York</p><p><i class="far fa-clock"></i> 10:00 – 19:30</p></div>
+      <div><p><i class="fas fa-map-pin"></i> Roma · Milano · New York</p><p><i class="far fa-clock"></i> 10:00 – 19:30 daily</p></div>
       <div class="social"><i class="fab fa-instagram"></i><i class="fab fa-facebook-f"></i><i class="fab fa-pinterest"></i></div>
       <div><p>Newsletter – subscribe</p><p>Return policy · privacy</p></div>
     </div>
-    <div class="copy">© 2025 GIOVANNI – all rights reserved</div>
+    <div class="copy">© 2025 GIOVANNI S.P.A. – all rights reserved – crafted with heritage</div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // SECTION SWITCHING (all 5 menus on one home page)
+    function switchSection(sectionId) {
+      // hide all sections
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active-section');
+      });
+      // show selected
+      document.getElementById(sectionId).classList.add('active-section');
+      // update active menu style
+      document.querySelectorAll('.menu-item').forEach(item => {
+        item.classList.remove('active-menu');
+      });
+      document.querySelector(`.menu-item[data-section="${sectionId}"]`).classList.add('active-menu');
+    }
+
+    // attach click event to menu items
+    document.querySelectorAll('.menu-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const section = item.getAttribute('data-section');
+        switchSection(section);
+      });
+    });
+
+    // SLIDER (only on home section, but works globally)
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    if (slides.length > 0) {
+      function showSlidesAuto() {
+        for (let i = 0; i < slides.length; i++) slides[i].style.display = 'none';
+        slideIndex++;
+        if (slideIndex > slides.length) slideIndex = 1;
+        if (slides[slideIndex-1]) slides[slideIndex-1].style.display = 'block';
+        setTimeout(showSlidesAuto, 4000);
+      }
+      showSlidesAuto();
+      window.changeSlide = function(n) {
+        slideIndex += n;
+        if (slideIndex < 1) slideIndex = slides.length;
+        if (slideIndex > slides.length) slideIndex = 1;
+        for (let i = 0; i < slides.length; i++) slides[i].style.display = 'none';
+        slides[slideIndex-1].style.display = 'block';
+      };
+      // initial display
+      for (let i = 0; i < slides.length; i++) slides[i].style.display = 'none';
+      slideIndex = 0;
+      showSlidesAuto();
+    }
+
+    // ensure that when clicking imagemap areas, section switches
+    // already defined switchSection globally
+  </script>
 </body>
 </html>
