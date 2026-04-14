@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Giovanni – Heritage Clothing</title>
+  <title>Giovanni – Heritage Clothing |</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -16,12 +16,10 @@
     body {
       background: #f7f5f0;
       background-image: radial-gradient(circle at 10% 20%, rgba(220,200,170,0.1) 0%, transparent 30%);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      scroll-behavior: smooth; /* smooth scroll when clicking menu */
     }
 
-    /* HEADER + MENU BAR (5 items) */
+    /* STICKY HEADER */
     .top-bar {
       background-color: #1e1e1e;
       color: #d4af37;
@@ -31,6 +29,11 @@
       align-items: center;
       border-bottom: 3px solid #b4945c;
       flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(2px);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
     }
 
     .logo h1 {
@@ -80,27 +83,26 @@
 
     .page-container {
       max-width: 1300px;
-      margin: 2rem auto;
+      margin: 0 auto;
       padding: 0 2rem;
-      flex: 1;
     }
 
-    /* sections: all 5 on one page */
+    /* each section has an id for scroll spy */
     .section {
-      display: none;
-      animation: fade 0.3s ease;
+      padding: 3rem 0 4rem 0;
+      scroll-margin-top: 90px; /* prevents header overlap when jumping */
+      border-bottom: 1px solid rgba(180, 148, 92, 0.2);
     }
-    .section.active-section {
-      display: block;
+    .section:last-child {
+      border-bottom: none;
     }
-    @keyframes fade { from { opacity: 0.3; } to { opacity: 1; } }
 
     h2 {
       font-size: 2.2rem;
       font-weight: 300;
       border-left: 6px solid #d4af37;
       padding-left: 1.2rem;
-      margin: 1.5rem 0 1.8rem 0;
+      margin: 1rem 0 2rem 0;
       color: #2c2c2c;
     }
 
@@ -238,7 +240,7 @@
       background: #1e1e1e;
       color: #b9ae9a;
       padding: 2rem 2rem 1.2rem;
-      margin-top: 4rem;
+      margin-top: 2rem;
       border-top: 4px solid #b4945c;
     }
     .footer-content {
@@ -254,6 +256,8 @@
     @media (max-width: 800px) {
       .two-col { grid-template-columns: 1fr; }
       .menu-bar { gap: 0.8rem; }
+      .top-bar { flex-direction: column; gap: 0.5rem; }
+      .slide img { height: 250px; }
     }
   </style>
 </head>
@@ -264,11 +268,11 @@
       <span>since 1982 • roma</span>
     </div>
     <nav class="menu-bar" id="menuBar">
-      <a class="menu-item active-menu" data-section="home">Home</a>
-      <a class="menu-item" data-section="men">Men</a>
-      <a class="menu-item" data-section="women">Women</a>
-      <a class="menu-item" data-section="kids">Kids</a>
-      <a class="menu-item" data-section="contact">Contact</a>
+      <a class="menu-item" href="#home">Home</a>
+      <a class="menu-item" href="#men">Men</a>
+      <a class="menu-item" href="#women">Women</a>
+      <a class="menu-item" href="#kids">Kids</a>
+      <a class="menu-item" href="#contact">Contact</a>
     </nav>
     <div class="cart-icon">
       <i class="fas fa-shopping-bag"></i>
@@ -278,7 +282,7 @@
 
   <main class="page-container">
     <!-- ========== SECTION 1: HOME ========== -->
-    <section id="home" class="section active-section">
+    <section id="home" class="section">
       <h2>La Dolce Vita · new lookbook</h2>
 
       <!-- Slider -->
@@ -311,9 +315,9 @@
       <div class="imagemap-container">
         <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1000&auto=format" alt="hotspot" usemap="#fashion-map">
         <map name="fashion-map">
-          <area shape="rect" coords="34,44,270,250" href="#" alt="Men" onclick="switchSection('men'); return false;">
-          <area shape="rect" coords="290,60,540,270" href="#" alt="Women" onclick="switchSection('women'); return false;">
-          <area shape="rect" coords="560,130,820,310" alt="Kids" onclick="switchSection('kids'); return false;">
+          <area shape="rect" coords="34,44,270,250" href="#men" alt="Men">
+          <area shape="rect" coords="290,60,540,270" href="#women" alt="Women">
+          <area shape="rect" coords="560,130,820,310" href="#kids" alt="Kids">
         </map>
         <p>⬆️ click on areas: men · women · kids (image map)</p>
       </div>
@@ -415,31 +419,7 @@
   </footer>
 
   <script>
-    // SECTION SWITCHING (all 5 menus on one home page)
-    function switchSection(sectionId) {
-      // hide all sections
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active-section');
-      });
-      // show selected
-      document.getElementById(sectionId).classList.add('active-section');
-      // update active menu style
-      document.querySelectorAll('.menu-item').forEach(item => {
-        item.classList.remove('active-menu');
-      });
-      document.querySelector(`.menu-item[data-section="${sectionId}"]`).classList.add('active-menu');
-    }
-
-    // attach click event to menu items
-    document.querySelectorAll('.menu-item').forEach(item => {
-      item.addEventListener('click', (e) => {
-        e.preventDefault();
-        const section = item.getAttribute('data-section');
-        switchSection(section);
-      });
-    });
-
-    // SLIDER (only on home section, but works globally)
+    // ---------- SLIDER (unchanged) ----------
     let slideIndex = 0;
     const slides = document.querySelectorAll('.slide');
     if (slides.length > 0) {
@@ -458,14 +438,43 @@
         for (let i = 0; i < slides.length; i++) slides[i].style.display = 'none';
         slides[slideIndex-1].style.display = 'block';
       };
-      // initial display
       for (let i = 0; i < slides.length; i++) slides[i].style.display = 'none';
       slideIndex = 0;
       showSlidesAuto();
     }
 
-    // ensure that when clicking imagemap areas, section switches
-    // already defined switchSection globally
+    // ---------- SCROLL SPY (highlight active menu on scroll) ----------
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.menu-bar a');
+
+    function updateActiveMenu() {
+      let current = '';
+      const scrollPosition = window.scrollY + 120; // offset for sticky header
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active-menu');
+        const href = link.getAttribute('href').substring(1); // remove '#'
+        if (href === current) {
+          link.classList.add('active-menu');
+        }
+      });
+    }
+
+    // initial call
+    updateActiveMenu();
+    window.addEventListener('scroll', updateActiveMenu);
+    window.addEventListener('resize', updateActiveMenu);
+
+    // optional: smooth scroll when clicking on imagemap areas (already handled by href="#section")
+    // ensure that when clicking on image map areas, the URL updates and scroll works
   </script>
 </body>
 </html>
